@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat Alternates', Arial, sans-serif;
+    font-family: Orbitron, Arial, sans-serif;
 }
 
 body {
@@ -69,10 +69,59 @@ body {
     height: 35px;
 }
 
-#entryContent button {
-    border: 2px solid;
-    border-color: aqua;
-    background: #000;
+#btnEnter {
+    background-color: transparent;
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    margin-top: 20px;
+    display: block;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#btnEnter div {
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    z-index: 2;
+}
+
+#btnEnter #btnTop {
+    border-top: 2px solid aqua;
+    
+    animation: buttonTop 0.5s ease;
+    animation-play-state: paused;
+}
+
+#btnEnter #btnBottom {
+    border-bottom: 2px solid aqua;
+    right: calc(50% - 75px);
+    
+    animation: buttonBottom 0.5s ease;
+    animation-play-state: paused;
+}
+
+#btnEnter #btnLeft {
+    border-left: 2px solid aqua;
+    position: absolute;
+    bottom: 0;
+    
+    animation: buttonLeft 0.25s ease;
+    animation-play-state: paused;
+}
+
+#btnEnter #btnRight {
+    border-right: 2px solid aqua;
+    
+    animation: buttonRight 0.25s ease;
+    animation-play-state: paused;
+}
+
+#btnEnter button {
+    border: 0;
+    background-color: transparent;
     width: 150px;
     height: 50px;
     margin: auto;
@@ -82,13 +131,39 @@ body {
     text-align: center;
 }
 
+.glitch:before, .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    left: 49%;
+    right: 49%;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+
+.glitch:before {
+    left: 808px;
+    right: 808px;
+    text-shadow: 2px 0 #00ffea;
+    background-color: black;
+    animation: glitchEffect 1s infinite linear;
+}
+
+.glitch:after {
+    left: 802px;
+    right: 802px;
+    text-shadow: -2px 0 #00ffea;  
+    background-color: black;
+    animation: glitchEffect 0.5s infinite linear;
+}
+
 @keyframes contentBackingAnim {
     0% {
-        height: 2px;
+        height: 0px;
         width: 0;
     }
     50% {
-        height: 2px;
+        height: 0px;
         width: 800px;
     }
     100% {
@@ -99,13 +174,13 @@ body {
 
 @keyframes contentBackingBorderHorizontalAnim {
     0% {
-        height: 2px;
+        height: 0px;
         width: 0;
         border-top: 0px solid aqua;
         border-bottom: 0px solid aqua;
     }
     5% {
-        height: 2px;
+        height: 0px;
         width: 0;
         border-top: 2px solid aqua;
         border-bottom: 2px solid aqua;
@@ -143,12 +218,107 @@ body {
     }
 }
 
+@keyframes buttonTop {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 150px;
+    }
+}
 
+@keyframes buttonBottom {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 150px;
+    }
+}
 
+@keyframes buttonLeft {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 50px;
+    }
+}
 
+@keyframes buttonRight {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 50px;
+    }
+}
 
-
-
+@keyframes glitchEffect {
+    0% {
+        clip: rect(55px, 9999px, 56px, 0);
+    }
+    5% {
+        clip: rect(47px, 9999px, 30px, 0);
+    }
+    10% {
+        clip: rect(33px, 9999px, 36px, 0);
+    }
+    15% {
+        clip: rect(35px, 9999px, 9px, 0);
+    }
+    20% {
+        clip: rect(63px, 9999px, 59px, 0);
+    }
+    25% {
+        clip: rect(96px, 9999px, 98px, 0);
+    }
+    30% {
+        clip: rect(48px, 9999px, 77px, 0);
+    }
+    35% {
+        clip: rect(50px, 9999px, 34px, 0);
+    }
+    40% {
+        clip: rect(60px, 9999px, 72px, 0);
+    }
+    45% {
+        clip: rect(10px, 9999px, 81px, 0);
+    }
+    50% {
+        clip: rect(2px, 9999px, 60px, 0);
+    }
+    55% {
+        clip: rect(23px, 9999px, 89px, 0);
+    }
+    60% {
+        clip: rect(76px, 9999px, 91px, 0);
+    }
+    65% {
+        clip: rect(62px, 9999px, 30px, 0);
+    }
+    70% {
+        clip: rect(60px, 9999px, 73px, 0);
+    }
+    75% {
+        clip: rect(60px, 9999px, 87px, 0);
+    }
+    80% {
+        clip: rect(2px, 9999px, 14px, 0);
+    }
+    85% {
+        clip: rect(28px, 9999px, 87px, 0);
+    }
+    90% {
+        clip: rect(73px, 9999px, 50px, 0);
+    }
+    95% {
+        clip: rect(79px, 9999px, 70px, 0);
+    }
+    100% {
+        clip: rect(17px, 9999px, 79px, 0);
+    }
+}
 
 
 

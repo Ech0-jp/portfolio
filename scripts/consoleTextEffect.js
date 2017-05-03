@@ -9,7 +9,6 @@ var offset = 0;
 var timeout = 5;
 var iterations = 10;
 var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'x', '#', '%', '&', '-', '+', '_', '?', '/', '\\', '='];
-var counter = 0;
 
 function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,8 +33,11 @@ function AnimateText(){
             iterations--;
             if (offset <= strings[index].length)
                 AnimateText();
-            else
+            else{
                 index++;
+                offset = 0;
+                iterations = 10;
+            }
         }
     }, timeout);
 }

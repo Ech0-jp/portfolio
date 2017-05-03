@@ -33,10 +33,29 @@ $(document).ready(function(){
                 if (drops[i] * fontSize > matrix.height && Math.random() > 0.975) {
                     drops[i] = 0;
                     if (matrixFilled == false) {
+                        //animate the content background.
                         contentBacking.style.webkitAnimationPlayState = "running";
                         contentBackingBorderHorizontal.style.webkitAnimationPlayState = "running";
                         contentBackingBorderVertical.style.webkitAnimationPlayState = "running";
+                        
+                        // animate the welcome message.
                         setTimeout(AnimateText, 2000);
+                        
+                        //animate the border for the button.
+                        setTimeout(() => {
+                            btnTop.style.webkitAnimationPlayState = "running";
+                            setTimeout(() => {
+                                btnRight.style.webkitAnimationPlayState = "running";
+                                setTimeout(() => {
+                                    btnBottom.style.webkitAnimationPlayState = "running";
+                                    setTimeout(() => {
+                                        btnLeft.style.webkitAnimationPlayState = "running";
+                                        // Animate button text.
+                                        setTimeout(AnimateText, 250);
+                                    }, 500)
+                                }, 250)
+                            }, 500)
+                        }, 4500);
                         
                         matrixFilled = true;
                     }
