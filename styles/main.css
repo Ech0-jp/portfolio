@@ -147,6 +147,7 @@ body {
     text-shadow: 2px 0 #00ffea;
     background-color: black;
     animation: glitchEffect 1s infinite linear;
+    animation-play-state: paused;
 }
 
 .glitch:after {
@@ -155,6 +156,7 @@ body {
     text-shadow: -2px 0 #00ffea;  
     background-color: black;
     animation: glitchEffect 0.5s infinite linear;
+    animation-play-state: paused;
 }
 
 @keyframes contentBackingAnim {
