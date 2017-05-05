@@ -4,6 +4,9 @@ var width = transitionCanvas.width = screen.width;
 var height = transitionCanvas.height = screen.height;
 var context = transitionCanvas.getContext('2d');
 
+var bg = new Image(width, height);
+bg.src = "/images/HexBlueGlowBackground.png";
+
 var japanese = "あいうえおかきくけこさしすせそがぎぐげごぱぴぷぺぽアイウエオカキクケコサシスセソガギグゲゴパピプペポ";
 japanese = japanese.split("");
 
@@ -34,7 +37,6 @@ var Transition = function(){
             context.fillText(text, i * fontSize, drops[i] * fontSize);
             if (drops[i] * fontSize > transitionCanvas.height + 50) {
                 document.getElementById("entry").style.visibility = "collapse";
-                // TELL THE ENTRY CANVAS TO STOP ANIMATING
                 hexBackground.style.visibility = "visible";
                 StopMatrix();
                 fadeIn = false;
@@ -44,7 +46,7 @@ var Transition = function(){
     }
     else{
         context.clearRect(0,0,width,height)
-        context.drawImage(img, 0, 0, width, height);
+        context.drawImage(bg, 0, 0, width, height);
         
         context.fillStyle = "black";
         context.fillRect(0, 0, width, drops[0] * fontSize);
