@@ -51,7 +51,12 @@ $(document).ready(function(){
                                     setTimeout(() => {
                                         btnLeft.style.webkitAnimationPlayState = "running";
                                         // Animate button text.
-                                        setTimeout(AnimateText, 250);
+                                        setTimeout(() => {
+                                            AnimateText();
+                                            setTimeout(() => {
+                                                btnEnter.style.pointerEvents = "all";
+                                            }, 500)
+                                        }, 250)
                                     }, 500)
                                 }, 250)
                             }, 500)
@@ -80,6 +85,14 @@ $(document).ready(function(){
     function RunMatrix(){
         if (typeof Game_Interval != "undefined")
             clearInterval(Game_Interval);
+        Game_Interval = setInterval(draw, 33);
+    }
+    
+    window.StopMatrix = function(){
+        clearInterval(Game_Interval);
+    }
+    
+    window.StartMatrix = function(){
         Game_Interval = setInterval(draw, 33);
     }
 });

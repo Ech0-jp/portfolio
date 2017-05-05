@@ -1,0 +1,42 @@
+var hexBackground = document.getElementById('hexBackground');
+hexBackground.width = width;
+hexBackground.height = height;
+var ctx = hexBackground.getContext('2d');
+
+var img = new Image(width, height);
+img.src = "/images/HexBlueGlowBackground.png";
+
+var radius = 0;
+
+var hexInterval;
+
+var AnimatedHexGrid = function(){
+    ctx.fillStyle = "rgba(0, 0, 0, 0.025)";
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.strokeStyle = "rgba(70,239,244,0.05)"
+    
+    ctx.beginPath();
+    ctx.arc(width/2, height/2, radius, 0, 2*Math.PI);
+    ctx.lineWidth = 100;
+    ctx.closePath();
+    ctx.stroke();
+    
+    radius += 3;
+    if (radius * 2 > width * 2)
+        radius = 0;
+      
+    ctx.drawImage(img, 0, 0, width, height);
+}
+
+function StartHexInterval(){
+    hexInterval = setInterval(AnimatedHexGrid, 33);
+}
+
+function ClearHexInterval(){
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, width, height);
+    ctx.drawImage(img, 0, 0, width, height);
+    
+    clearInterval(hexInterval);
+}

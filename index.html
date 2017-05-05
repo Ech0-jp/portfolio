@@ -18,10 +18,11 @@
     <![endif]-->
 </head>
 
-<body onload="for(s=window.screen,w=q.width=s.width,h=q.height=s.height,m=...e4?0:v+10})'.split(9).join(';q.getContext(\'2d\').fill'),33)">
+<body>
+    
     <div id="entry">
         <canvas id="matrix"></canvas>
-        <div id="entryContent" class="container-fluid">
+        <div id="entryContent">
             <div id="contentBacking"></div>
             <div id="contentBackingBorderHorizontal"></div>
             <div id="contentBackingBorderVertical"></div>
@@ -33,12 +34,23 @@
                 <div id="btnLeft"></div>
                 <div id="btnRight"></div>
                 <button class="console-text glitch" data-text="Enter">Enter</button>
+            </div>
         </div>
     </div>
-
+    <div id="main"></div>
+    <div id="projects" class="transitionTop"></div>
+    <div id="about" class="transitionRight"></div>
+    <div id="contact" class="transitionBottom"></div>
+    <div id="resume" class="transitionLeft"></div>
+    
+    <canvas id="hexBackground"></canvas>
+    <canvas id="transitionCanvas"></canvas>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="scripts/entry.js"></script>
     <script src="scripts/consoleTextEffect.js"></script>
+    <script src="scripts/matrixTransition.js"></script>
+    <script src="scripts/hexBackground.js"></script>
 </body>
 </html>

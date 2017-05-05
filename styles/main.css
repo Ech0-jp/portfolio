@@ -8,6 +8,18 @@ body {
     background: black;
 }
 
+#transitionCanvas, #hexBackground {
+    display: block;
+    position: fixed;
+    top: 0px;
+    z-index: 5;
+    visibility: collapse;
+}
+
+#hexBackground {
+    z-index: -1;
+}
+
 #entry canvas {
     display: block;
     position: fixed;
@@ -79,6 +91,7 @@ body {
     font-size: 17px;
     text-align: center;
     cursor: pointer;
+    pointer-events: none;
 }
 
 #btnEnter div {
@@ -131,32 +144,38 @@ body {
     text-align: center;
 }
 
+
 .glitch:before, .glitch:after {
     content: attr(data-text);
     position: absolute;
-    left: 49%;
-    right: 49%;
+    left: 50%;
+    right: 50%;
     overflow: hidden;
     background-color: black;
     color: white;
+    visibility: hidden;
 }
 
 .glitch:before {
     left: 808px;
     right: 808px;
-    text-shadow: 2px 0 #00ffea;
-    background-color: black;
-    animation: glitchEffect 1s infinite linear;
-    animation-play-state: paused;
 }
 
 .glitch:after {
     left: 802px;
     right: 802px;
-    text-shadow: -2px 0 #00ffea;  
-    background-color: black;
+}
+
+#btnEnter:hover .glitch:before {
+    visibility: visible;
+    text-shadow: 2px 0 #00ffea;
+    animation: glitchEffect 1s infinite linear;
+}
+
+#btnEnter:hover .glitch::after {
+    visibility: visible;
+    text-shadow: -2px 0 #00ffea;
     animation: glitchEffect 0.5s infinite linear;
-    animation-play-state: paused;
 }
 
 @keyframes contentBackingAnim {
@@ -253,6 +272,24 @@ body {
     }
     100% {
         height: 50px;
+    }
+}
+
+@keyframes glitchBorder {
+    0% {
+        transform: translate(-2px, 2px);
+    }
+    25% {
+        transform: translate(-2px, -2px);
+    }
+    50% {
+        transform: translate(2px, 2px);
+    }
+    75% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(-2px, 2px);
     }
 }
 
