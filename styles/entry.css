@@ -8,6 +8,18 @@ body {
     background: black;
 }
 
+.image-preloader {
+    visibility: collapse;
+    width: 0;
+    height: 0;
+}
+
+.image-preloader img {
+    visibility: collapse;
+    width: 0;
+    height: 0;
+}
+
 #transitionCanvas {
     display: block;
     position: fixed;
