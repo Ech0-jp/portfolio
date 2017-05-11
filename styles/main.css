@@ -1,363 +1,180 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Orbitron, Arial, sans-serif;
-}
-
-body {
-    background: black;
-}
-
-#transitionCanvas, #hexBackground {
-    display: block;
-    position: fixed;
-    top: 0px;
-    z-index: 5;
+#main {
     visibility: collapse;
 }
 
-#hexBackground {
-    z-index: -1;
-}
-
-#entry canvas {
-    display: block;
-    position: fixed;
-    margin-top: 0px;
-    z-index: -1;
-}
-
-#entryContent {
-    color: #FFF;
-    text-align: center;
-    transform: translateY(450%)
-}
-
-#contentBacking {
-    position: fixed;
-    width: 800px;
-    height: 200px;
-    margin-left: calc(50% - 400px);
-    transform: translateY(-25%);
-    background-color: #000;
-    z-index: -1;
-    
-    animation: contentBackingAnim 2s ease;
-    animation-play-state: paused;
-}
-
-#contentBackingBorderHorizontal {
-    position: fixed;
-    z-index: -1;
-    width: 850px;
-    height: 200px;
-    margin-left: calc(50% - 425px);
-    transform: translateY(-25%);
-    border-top-color: aqua;
-    border-top: 2px solid aqua;
-    border-bottom: 2px solid aqua;
-    
-    animation: contentBackingBorderHorizontalAnim 2s ease;
-    animation-play-state: paused;
-}
-
-#contentBackingBorderVertical {
-    position: fixed;
-    z-index: -1;
-    width: 800px;
-    height: 250px;
-    margin-left: calc(50% - 400px);
-    transform: translateY(calc(-25% - 10px));
-    border-color: aqua;
-    border-left: 2px solid aqua;
-    border-right: 2px solid aqua;
-    
-    animation: contentBackingBorderVerticalAnim 2s ease;
-    animation-play-state: paused;
-}
-
-#entryContent p {
-    font-size: 20px;
-    height: 35px;
-}
-
-#btnEnter {
-    background-color: transparent;
-    width: 150px;
-    height: 50px;
-    margin: auto;
-    margin-top: 20px;
-    display: block;
-    font-size: 17px;
-    text-align: center;
-    cursor: pointer;
-    pointer-events: none;
-}
-
-#btnEnter div {
-    width: 150px;
-    height: 50px;
+#mainImageBorder, #mainImagesBackground, #mainImages {
     position: absolute;
-    z-index: 2;
-}
-
-#btnEnter #btnTop {
-    border-top: 2px solid aqua;
-    
-    animation: buttonTop 0.5s ease;
-    animation-play-state: paused;
-}
-
-#btnEnter #btnBottom {
-    border-bottom: 2px solid aqua;
-    right: calc(50% - 75px);
-    
-    animation: buttonBottom 0.5s ease;
-    animation-play-state: paused;
-}
-
-#btnEnter #btnLeft {
-    border-left: 2px solid aqua;
-    position: absolute;
-    bottom: 0;
-    
-    animation: buttonLeft 0.25s ease;
-    animation-play-state: paused;
-}
-
-#btnEnter #btnRight {
-    border-right: 2px solid aqua;
-    
-    animation: buttonRight 0.25s ease;
-    animation-play-state: paused;
-}
-
-#btnEnter button {
-    border: 0;
-    background-color: transparent;
-    width: 150px;
-    height: 50px;
-    margin: auto;
-    margin-top: 20px;
-    display: block;
-    font-size: 17px;
-    text-align: center;
-}
-
-
-.glitch:before, .glitch:after {
-    content: attr(data-text);
-    position: absolute;
-    left: 50%;
+    width: 750px;
+    height: 422px;
+    transform: translate(50%, 50%);
     right: 50%;
-    overflow: hidden;
+    bottom: 50%;
+    z-index: 1;
+    animation: imageBorderAnimation 1s ease;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#mainImagesBackground {
     background-color: black;
+    z-index: 0;
+}
+
+#mainImages {
+    z-index: 0;
+}
+
+#main a {
+    letter-spacing: 5px;
     color: white;
-    visibility: hidden;
+    font-size: 23px;
+    position: fixed;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
-.glitch:before {
-    left: 808px;
-    right: 808px;
+#main a:hover {
+    color: white;
+    text-decoration: none;
 }
 
-.glitch:after {
-    left: 802px;
-    right: 802px;
+#main a:nth-child(2) {
+    transform: translate(50%, 50%);
+    top: calc(50% - 271px);
+    right: 50%;
 }
 
-#btnEnter:hover .glitch:before {
-    visibility: visible;
-    text-shadow: 2px 0 #00ffea;
-    animation: glitchEffect 1s infinite linear;
+#main a:hover:nth-child(2) {
+    letter-spacing: 84px;
+    right: calc(50% - 42px);
 }
 
-#btnEnter:hover .glitch::after {
-    visibility: visible;
-    text-shadow: -2px 0 #00ffea;
-    animation: glitchEffect 0.5s infinite linear;
+#main a:nth-child(3) {
+    width: 90px;
+    height: 28px;
+    transform: translate(50%, 50%);
+    transform: rotate(90deg);
+    right: calc(50% - 445px);
+    top: 50%;
 }
 
-@keyframes contentBackingAnim {
+#main a:hover:nth-child(3) {
+    letter-spacing: 83px;
+    width: 422px;
+    right: calc(50% - 612px);
+}
+
+#main a:nth-child(4) {
+    bottom: 10px;
+    transform: translate(50%, 50%);
+    right: 50%;
+    bottom: calc(50% - 241px)
+}
+
+#main a:hover:nth-child(4) {
+    letter-spacing: 102px;
+    right: calc(50% - 42px);
+}
+
+#main a:nth-child(5) {
+    width: 120px;
+    height: 28px;
+    transform: translate(50%, 50%);
+    transform: rotate(-90deg);
+    left: calc(50% - 465px);
+    top: 50%;
+}
+
+#main a:hover:nth-child(5) {
+    letter-spacing: 61px;
+    width: 430px;
+    left: calc(50% - 620px);
+    top: calc(50% - 32px);
+}
+
+@keyframes imageBorderAnimation {
     0% {
-        height: 0px;
-        width: 0;
+        width: 0;    
+    }
+    1% {
+        height: 10px;
     }
     50% {
-        height: 0px;
-        width: 800px;
+        width: 750px;
+        height: 10px;
+        transform: translate(50%, 50%);
+        right: 50%;
+        bottom: 50%;
     }
     100% {
-        height: 200px;
-        width: 800px;
+        height: 422px;
+        transform: translate(50%, 50%);
+        right: 50%;
+        bottom: 50%;
     }
 }
 
-@keyframes contentBackingBorderHorizontalAnim {
+@keyframes letterSpacingAnimation {
     0% {
-        height: 0px;
-        width: 0;
-        border-top: 0px solid aqua;
-        border-bottom: 0px solid aqua;
-    }
-    5% {
-        height: 0px;
-        width: 0;
-        border-top: 2px solid aqua;
-        border-bottom: 2px solid aqua;
-    }
-    50% {
-        height: 2px;
-        width: 850px;
+        letter-spacing: 
     }
     100% {
-        height: 200px;
-        width: 850px;
+        letter-spacing: 50px;
     }
 }
 
-@keyframes contentBackingBorderVerticalAnim {
+@keyframes letterSpacingReverseAnimation {
     0% {
-        height: 0px;
-        width: 0;
-        border-left: 0px solid aqua;
-        border-right: 0px solid aqua;
-    }
-    5% {
-        height: 0px;
-        width: 0;
-        border-left: 2px solid aqua;
-        border-right: 2px solid aqua;
-    }
-    50% {
-        height: 0px;
-        width: 800px;
+        letter-spacing: normal;
     }
     100% {
-        height: 250px;
-        width: 800px;
+        letter-spacing: 5px;
     }
 }
 
-@keyframes buttonTop {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 150px;
-    }
-}
 
-@keyframes buttonBottom {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 150px;
-    }
-}
 
-@keyframes buttonLeft {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 50px;
-    }
-}
 
-@keyframes buttonRight {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 50px;
-    }
-}
 
-@keyframes glitchBorder {
-    0% {
-        transform: translate(-2px, 2px);
-    }
-    25% {
-        transform: translate(-2px, -2px);
-    }
-    50% {
-        transform: translate(2px, 2px);
-    }
-    75% {
-        transform: translate(2px, -2px);
-    }
-    100% {
-        transform: translate(-2px, 2px);
-    }
-}
 
-@keyframes glitchEffect {
-    0% {
-        clip: rect(55px, 9999px, 56px, 0);
-    }
-    5% {
-        clip: rect(47px, 9999px, 30px, 0);
-    }
-    10% {
-        clip: rect(33px, 9999px, 36px, 0);
-    }
-    15% {
-        clip: rect(35px, 9999px, 9px, 0);
-    }
-    20% {
-        clip: rect(63px, 9999px, 59px, 0);
-    }
-    25% {
-        clip: rect(96px, 9999px, 98px, 0);
-    }
-    30% {
-        clip: rect(48px, 9999px, 77px, 0);
-    }
-    35% {
-        clip: rect(50px, 9999px, 34px, 0);
-    }
-    40% {
-        clip: rect(60px, 9999px, 72px, 0);
-    }
-    45% {
-        clip: rect(10px, 9999px, 81px, 0);
-    }
-    50% {
-        clip: rect(2px, 9999px, 60px, 0);
-    }
-    55% {
-        clip: rect(23px, 9999px, 89px, 0);
-    }
-    60% {
-        clip: rect(76px, 9999px, 91px, 0);
-    }
-    65% {
-        clip: rect(62px, 9999px, 30px, 0);
-    }
-    70% {
-        clip: rect(60px, 9999px, 73px, 0);
-    }
-    75% {
-        clip: rect(60px, 9999px, 87px, 0);
-    }
-    80% {
-        clip: rect(2px, 9999px, 14px, 0);
-    }
-    85% {
-        clip: rect(28px, 9999px, 87px, 0);
-    }
-    90% {
-        clip: rect(73px, 9999px, 50px, 0);
-    }
-    95% {
-        clip: rect(79px, 9999px, 70px, 0);
-    }
-    100% {
-        clip: rect(17px, 9999px, 79px, 0);
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

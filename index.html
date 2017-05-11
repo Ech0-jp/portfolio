@@ -9,7 +9,9 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/entry.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/projects.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
 
     <!--[if IE]>
@@ -26,19 +28,39 @@
             <div id="contentBacking"></div>
             <div id="contentBackingBorderHorizontal"></div>
             <div id="contentBackingBorderVertical"></div>
-            <p class="console-text">Welcome to the portfolio of Andrew Gray!</p>
+            <p id="entryWelcomeMessage"></p> <!-- Welcome to the portfolio of Andrew Gray! -->
             
             <div id="btnEnter">
                 <div id="btnTop"></div>
                 <div id="btnBottom"></div>
                 <div id="btnLeft"></div>
                 <div id="btnRight"></div>
-                <button class="console-text glitch" data-text="Enter">Enter</button>
+                <button id="entryButton" class="glitch" data-text="Enter"></button> <!-- Enter -->
             </div>
         </div>
     </div>
-    <div id="main"></div>
-    <div id="projects" class="transitionTop"></div>
+    <div id="main">
+        <div id="mainImgScroller">
+            <div id="mainImagesBackground"></div>
+            <img id="mainImages" src="">
+            <img id="mainImageBorder" src="images/ImageBorder.png">
+        </div>
+        <a id="mainProjectsLink"></a>
+        <a id="mainAboutLink"></a>
+        <a id="mainContactLink"></a>
+        <a id="mainResumeLink"></a>
+    </div>
+    <div id="projects">
+        <div id="titlePositionDummy"></div>
+        <div id="imgPositionDummy"></div>
+        <h1 id="projectsTitle">Example Title</h1>
+        <div id="projectsImgScroller">
+            <div id="projectsImagesBackground"></div>
+            <img id="projectsImages" src="">
+            <img id="projectsImageBorder" src="images/ImageBorder.png">
+        </div>
+        <p id="projectsText">Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph Example paragraph </p>
+    </div>
     <div id="about" class="transitionRight"></div>
     <div id="contact" class="transitionBottom"></div>
     <div id="resume" class="transitionLeft"></div>
@@ -52,5 +74,8 @@
     <script src="scripts/consoleTextEffect.js"></script>
     <script src="scripts/matrixTransition.js"></script>
     <script src="scripts/hexBackground.js"></script>
+    <script src="scripts/base64Corruption.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/projects.js"></script>
 </body>
 </html>

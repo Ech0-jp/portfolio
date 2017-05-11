@@ -39,7 +39,10 @@ $(document).ready(function(){
                         contentBackingBorderVertical.style.webkitAnimationPlayState = "running";
                         
                         // animate the welcome message.
-                        setTimeout(AnimateText, 2000);
+                        setTimeout(() => {
+                            //var target = entryWelcomeMessage;
+                            AnimateText(entryWelcomeMessage, "Welcome to the portfolio of Andrew Gray!");
+                        }, 2000);
                         
                         //animate the border for the button.
                         setTimeout(() => {
@@ -52,7 +55,8 @@ $(document).ready(function(){
                                         btnLeft.style.webkitAnimationPlayState = "running";
                                         // Animate button text.
                                         setTimeout(() => {
-                                            AnimateText();
+                                            //var target = entryButton;
+                                            AnimateText(entryButton, "Enter");
                                             setTimeout(() => {
                                                 btnEnter.style.pointerEvents = "all";
                                             }, 500)
@@ -81,7 +85,9 @@ $(document).ready(function(){
         }
         
     };
+    
     RunMatrix();
+    
     function RunMatrix(){
         if (typeof Game_Interval != "undefined")
             clearInterval(Game_Interval);
@@ -95,4 +101,72 @@ $(document).ready(function(){
     window.StartMatrix = function(){
         Game_Interval = setInterval(draw, 33);
     }
+    
+    $("#btnEnter").click(function(){
+        $("#btnEnter").addClass("no-hover");
+        StartTransition("down", "entry");
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ hexBackground.height = height;
 var ctx = hexBackground.getContext('2d');
 
 var img = new Image(width, height);
-img.src = "/images/HexBlueGlowBackground.png";
+img.src = "/images/HexBackground.png";
 
 var radius = 0;
 
@@ -17,12 +17,12 @@ var AnimatedHexGrid = function(){
     ctx.strokeStyle = "rgba(70,239,244,0.05)"
     
     ctx.beginPath();
-    ctx.arc(width/2, height/2, radius, 0, 2*Math.PI);
+    ctx.arc(window.innerWidth/2, window.innerHeight/2, radius, 0, 2*Math.PI);
     ctx.lineWidth = 100;
     ctx.closePath();
     ctx.stroke();
     
-    radius += 3;
+    radius += 6;
     if (radius * 2 > width * 2)
         radius = 0;
       
@@ -37,6 +37,6 @@ function ClearHexInterval(){
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0, width, height);
-    
+    radius = 0;
     clearInterval(hexInterval);
 }

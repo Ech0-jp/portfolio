@@ -1,0 +1,104 @@
+#projects {
+    visibility: collapse;
+    color: white;
+}
+
+#titlePositionDummy {
+    position: absolute;
+    width: 270px;
+    height: 39px;
+    transform: translate(80px, 50%);
+    bottom: calc(50% + 200px);
+}
+
+#imgPositionDummy {
+    position: absolute;
+    width: 640px;
+    height: 360px;
+    transform: translate(50px, 50%);
+    bottom: 50%;
+    z-index: 1;
+}
+
+#projectsImageBorder, #projectsImagesBackground, #projectsImages {
+    position: absolute;
+    width: 640px;
+    height: 360px;
+    transform: translate(50px, 50%);
+    bottom: 50%;
+    z-index: 1;
+}
+
+#projectsImagesBackground {
+    background-color: black;
+    z-index: 0;
+}
+
+#projectsImages {
+    z-index: 0;
+}
+
+#projectsTitle {
+    position: absolute;
+    width: 270px;
+    height: 39px;
+    transform: translate(80px, 50%);
+    bottom: calc(50% + 200px);
+}
+
+#projectsText {
+    position: absolute;
+    width: calc(100% - 790px);
+    height: 360px;
+    min-width: 500px;
+    transform: translate(740px, 50%);
+    bottom: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
