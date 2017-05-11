@@ -5,7 +5,7 @@ var height = transitionCanvas.height = screen.height;
 var context = transitionCanvas.getContext('2d');
 
 var bg = new Image(width, height);
-bg.src = "/images/HexBackground.png";
+bg.src = "/portfolio/images/HexBackground.png";
 
 var japanese = "あいうえおかきくけこさしすせそがぎぐげごぱぴぷぺぽアイウエオカキクケコサシスセソガギグゲゴパピプペポ";
 japanese = japanese.split("");

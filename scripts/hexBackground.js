@@ -4,7 +4,7 @@ hexBackground.height = height;
 var ctx = hexBackground.getContext('2d');
 
 var img = new Image(width, height);
-img.src = "/images/HexBackground.png";
+img.src = "/portfolio/images/HexBackground.png";
 
 var radius = 0;
 

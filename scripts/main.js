@@ -3,13 +3,13 @@ var maxErrors = 100;
 var margin = 2200;
 var base64Black = "data:image/jpeg;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
 var imageSources = [
-    "/images/main/softwareDeveloper.jpg", 
-    "/images/main/gameDeveloper.png", 
-    "/images/main/unityLogo.png",
-    "/images/main/cSharp.jpg",
-    "/images/main/cPlusPlus.jpg",
-    "/images/main/js.jpg",
-    "/images/main/html-css.jpg"];
+    "/portfolio/images/main/softwareDeveloper.jpg", 
+    "/portfolio/images/main/gameDeveloper.png", 
+    "/portfolio/images/main/unityLogo.png",
+    "/portfolio/images/main/cSharp.jpg",
+    "/portfolio/images/main/cPlusPlus.jpg",
+    "/portfolio/images/main/js.jpg",
+    "/portfolio/images/main/html-css.jpg"];
 var imageSourcesBase64 = null;
 var imageIndex = 0;
 var corruptImageInterval;
