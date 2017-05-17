@@ -2,7 +2,6 @@
     visibility: collapse;
     color: white;
 }
-
 #titlePositionDummy {
     position: absolute;
     width: 270px;
@@ -11,13 +10,104 @@
     bottom: calc(50% + 200px);
 }
 
-#imgPositionDummy {
+.menu-container {
     position: absolute;
-    width: 640px;
-    height: 360px;
-    transform: translate(50px, 50%);
-    bottom: 50%;
+    width: 150px;
+    height: 50px;
+    transform: translateX(50%);
+    right: 50%;
+    top: 25px;
+    pointer-events: none;
+}
+
+.menu-borders {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    z-index: 2;
+}
+
+#menuBorderTop {
+    position: absolute;
+    border-top: 3px solid white;
+    width: 150px;
+    height: 50px;
+    
+    animation: buttonTop 0.5s ease;
+    animation-play-state: paused;
+}
+
+#menuBorderBottom {
+    position: absolute;
+    border-bottom: 3px solid white;
+    width: 150px;
+    height: 50px;
+    right: 0;
+    
+    animation: buttonBottom 0.5s ease;
+    animation-play-state: paused;
+}
+
+#menuBorderLeft {
+    position: absolute;
+    border-left: 3px solid white;
+    width: 150px;
+    height: 50px;
+    
+    animation: buttonLeft 0.5s ease;
+    animation-play-state: paused;
+}
+
+#menuBorderRight {
+    position: absolute;
+    border-right: 3px solid white;
+    width: 150px;
+    height: 50px;
+    bottom: 0;
+    
+    animation: buttonRight 0.5s ease;
+    animation-play-state: paused;
+}
+
+.menu-title {
+    position: absolute;
+    width: 144px;
+    height: 53px;
+    right: 3px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+    background-color: black;
+    cursor: pointer;
     z-index: 1;
+    pointer-events: all;
+}
+
+.menu {
+    position: relative;
+    width: 150px;
+    height: 0px;
+    top: 44px;
+    background: black;
+}
+
+.menu a {
+    font-size: 15px;
+    width: 150px;
+    height: 44px;
+    display: inline-block;
+    line-height: 44px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: -4px;
+    pointer-events: none;
+    color: white;
+}
+
+.menu a:not(.no-hover):hover {
+    text-decoration: none;
+    background-color: white;
+    color: black;
 }
 
 #projectsImageBorder, #projectsImagesBackground, #projectsImages {
@@ -27,6 +117,8 @@
     transform: translate(50px, 50%);
     bottom: 50%;
     z-index: 1;
+    animation: imageBorder 1s ease;
+    animation-play-state: paused;
 }
 
 #projectsImagesBackground {
@@ -40,10 +132,35 @@
 
 #projectsTitle {
     position: absolute;
-    width: 270px;
+    width: 300px;
     height: 39px;
     transform: translate(80px, 50%);
-    bottom: calc(50% + 200px);
+    bottom: calc(50% + 230px);
+}
+
+#projectsSubtitle {
+    position: absolute;
+    width: auto;
+    height: 39px;
+    transform: translate(80px, 50%);
+    bottom: calc(50% + 180px);
+}
+
+#projectsDownload {
+    letter-spacing: 5px;
+    color: white;
+    font-size: 23px;
+    position: fixed;
+    display: block;
+    cursor: pointer;
+    
+    transform: translate(270px, 50%);
+    bottom: calc(50% - 210px);
+    
+}
+
+#projectsDownload:visited, #projectsDownload:active, #projectsDownload:link {
+    text-decoration: none;
 }
 
 #projectsText {
@@ -53,11 +170,60 @@
     min-width: 500px;
     transform: translate(740px, 50%);
     bottom: 50%;
+    text-align: justify; 
+    font-size: 17px;
 }
 
+.footer-dummy{
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    height: 23px;
+}
 
+#projectsFooter {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 10px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    letter-spacing: 5px;
+    cursor: pointer;
+    
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
 
+#projectsFooter:hover {
+    text-decoration: none;
+    letter-spacing: 100px;
+    left: 70px;
+}
 
+#projectsFooter:visited, #projectsFooter:active, #projectsFooter:link {
+    text-decoration: none;
+}
+
+@keyframes imageBorder {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    1% {
+        height: 10px;
+    }
+    50% {
+        width: 640px;
+        height: 10px;
+    }
+    100% {
+        height: 360px;
+    }
+}
 
 
 

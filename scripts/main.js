@@ -1,7 +1,6 @@
 var mainImage = document.getElementById("mainImages");
 var maxErrors = 100;
 var margin = 2200;
-var base64Black = "data:image/jpeg;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
 var imageSources = [
     "/portfolio/images/main/softwareDeveloper.jpg", 
     "/portfolio/images/main/gameDeveloper.png", 
@@ -45,12 +44,14 @@ function toBase64(src, callback, outputformat){
 function MainTransition(){
     stopMain = false;
     document.getElementById("main").style.visibility = "visible";
-    document.getElementById("mainImageBorder").style.webkitAnimationPlayState = "running";
-    document.getElementById("mainImagesBackground").style.webkitAnimationPlayState = "running";
-    mainImage.src = base64Black;
-    document.getElementById("mainImages").style.webkitAnimationPlayState = "running";
+    $("#mainImageBorder, #mainImagesBackground, #mainImages").css({
+        'animation': 'imageBorderAnimation 1s ease'
+    });
     
     setTimeout(() => {
+        $("#mainImageBorder, #mainImagesBackground, #mainImages").css({
+        'animation': 'none'
+    });
         corruptImage();
         AnimateText(mainProjectsLink, "Projects");
         AnimateText(mainAboutLink, "About");
@@ -62,15 +63,12 @@ function MainTransition(){
 function StopMain(){
     stopMain = true;
     document.getElementById("main").style.visibility = "collapse";
-    document.getElementById("mainImageBorder").style.webkitAnimationPlayState = "paused";
-    document.getElementById("mainImagesBackground").style.webkitAnimationPlayState = "paused";
-    mainImage.src = base64Black;
-    document.getElementById("mainImages").style.webkitAnimationPlayState = "paused";
+    mainImage.src = "#";
     
-    mainProjectsLink.textContent = "";
-    mainAboutLink.textContent = "";
-    mainContactLink.textContent = "";
-    mainResumeLink.textContent = "";
+    mainProjectsLink.innerHTML = "";
+    mainAboutLink.innerHTML = "";
+    mainContactLink.innerHTML = "";
+    mainResumeLink.innerHTML = "";
 }
 
 function corruptImage() {

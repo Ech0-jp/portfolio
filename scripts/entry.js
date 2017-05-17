@@ -47,24 +47,20 @@ $(document).ready(function(){
                         //animate the border for the button.
                         setTimeout(() => {
                             btnTop.style.webkitAnimationPlayState = "running";
+                            btnBottom.style.webkitAnimationPlayState = "running";
                             setTimeout(() => {
                                 btnRight.style.webkitAnimationPlayState = "running";
+                                btnLeft.style.webkitAnimationPlayState = "running";
+                                // Animate button text.
                                 setTimeout(() => {
-                                    btnBottom.style.webkitAnimationPlayState = "running";
+                                    //var target = entryButton;
+                                    AnimateText(entryButton, "Enter");
                                     setTimeout(() => {
-                                        btnLeft.style.webkitAnimationPlayState = "running";
-                                        // Animate button text.
-                                        setTimeout(() => {
-                                            //var target = entryButton;
-                                            AnimateText(entryButton, "Enter");
-                                            setTimeout(() => {
-                                                btnEnter.style.pointerEvents = "all";
-                                            }, 500)
-                                        }, 250)
-                                    }, 500)
-                                }, 250)
-                            }, 500)
-                        }, 4500);
+                                        btnEnter.style.pointerEvents = "all";
+                                    }, 100);
+                                }, 250);
+                            }, 500);
+                        }, 3500);
                         
                         matrixFilled = true;
                     }

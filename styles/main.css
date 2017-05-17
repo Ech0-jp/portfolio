@@ -10,9 +10,7 @@
     right: 50%;
     bottom: 50%;
     z-index: 1;
-    animation: imageBorderAnimation 1s ease;
-    animation-fill-mode: forwards;
-    animation-play-state: paused;
+    
 }
 
 #mainImagesBackground {
