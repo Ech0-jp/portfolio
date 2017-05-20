@@ -327,7 +327,7 @@ function ProjectsTransition(){
                 "animation-play-state": 'running'
             });
             setTimeout(function(){
-                AnimateText(document.getElementById("menu-title"), "Menu");
+                AnimateText(document.getElementById("menu-title"), "Project Menu");
                 $(".menu").css("border", "3px solid white");
                 $("#menuBorderTop, #menuBorderBottom, #menuBorderLeft, #menuBorderRight").css({
                     'animation': 'none'
