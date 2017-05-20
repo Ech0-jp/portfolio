@@ -1,6 +1,7 @@
 var mainImage = document.getElementById("mainImages");
 var maxErrors = 100;
 var margin = 2200;
+var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABA‌​AACAUwAOw==";
 var imageSources = [
     "/portfolio/images/main/softwareDeveloper.jpg", 
     "/portfolio/images/main/gameDeveloper.png", 
@@ -45,7 +46,7 @@ function MainTransition(){
     stopMain = false;
     document.getElementById("main").style.visibility = "visible";
     $("#mainImageBorder, #mainImagesBackground, #mainImages").css({
-        'animation': 'imageBorderAnimation 1s ease'
+        'animation-play-state': 'running'
     });
     
     setTimeout(() => {
@@ -63,7 +64,10 @@ function MainTransition(){
 function StopMain(){
     stopMain = true;
     document.getElementById("main").style.visibility = "collapse";
-    mainImage.src = "#";
+    $("#mainImageBorder, #mainImagesBackground, #mainImages").css({
+        'animation': 'imageBorderAnimation 1s ease',
+        'animation-play-state': 'paused'
+    });
     
     mainProjectsLink.innerHTML = "";
     mainAboutLink.innerHTML = "";
@@ -72,8 +76,10 @@ function StopMain(){
 }
 
 function corruptImage() {
-    if (stopMain)
+    if (stopMain){
+        mainImage.src = "#";
         return;
+    }
     mainImage.src = imageSourcesBase64[imageIndex];
     setTimeout(() => {
         if (corruptImageInterval)
@@ -98,8 +104,51 @@ function corruptImage() {
 
 $("#mainProjectsLink").click(function(){
     StartTransition("down", "projects");
+    $(this).css({
+        'pointer-events': 'none'
+    });
+    setTimeout(function(){
+        $("#mainProjectsLink").css({
+            'pointer-events': 'all'
+        })
+    }, 1000);
 });
 
+$("#mainContactLink").click(function(){
+    StartTransition("up", "contact");
+    $(this).css({
+        'pointer-events': 'none'
+    });
+    setTimeout(function(){
+        $("#mainContactLink").css({
+            'pointer-events': 'all'
+        })
+    }, 1000);
+});
+
+$("#mainAboutLink").click(function(){
+    StartTransition("left", "about");
+    $(this).css({
+        'pointer-events': 'none'
+    });
+    setTimeout(function(){
+        $("#mainAboutLink").css({
+            'pointer-events': 'all'
+        })
+    }, 1000);
+});
+
+$("#mainResumeLink").click(function(){
+    StartTransition("right", "resume");
+    $(this).css({
+        'pointer-events': 'none'
+    });
+    setTimeout(function(){
+        $("#mainResumeLink").css({
+            'pointer-events': 'all'
+        })
+    }, 1000);
+});
 
 
 

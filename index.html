@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="styles/entry.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/projects.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/resume.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
 
     <!--[if IE]>
@@ -49,6 +52,7 @@
             </div>
         </div>
     </div>
+    
     <div id="main">
         <div id="mainImgScroller">
             <div id="mainImagesBackground"></div>
@@ -60,6 +64,7 @@
         <a id="mainContactLink"></a>
         <a id="mainResumeLink"></a>
     </div>
+    
     <div id="projects">
         <div id="titlePositionDummy"></div>
 
@@ -95,9 +100,68 @@
         <div class="footer-dummy"></div>
         <a id="projectsFooter"></a>
     </div>
-    <div id="about" class="transitionRight"></div>
-    <div id="contact" class="transitionBottom"></div>
-    <div id="resume" class="transitionLeft"></div>
+    
+    <div id="about">
+        <a id="aboutReturn"></a>
+        <p id="aboutText"></p>
+    </div>
+    
+    <div id="contact">
+        <a id="contact-header"></a>
+        
+        <div class="container-horizontal"></div>
+        <div class="container-vertical"></div>
+        <div class="container">
+            <form id="contactForm" action="/scripts/secure_email.php" method="post">
+                <h3 id="contactFormHeader"></h3>
+                <fieldset>
+                    <input name="name" placeholder="Name/Company" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input name="email" placeholder="Email" type="email" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input name="sub" placeholder="Subject" type="text" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <textarea name="msg" placeholder="Message" type="text" tabindex="4" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <button id="contactSubmit" name="submit" type="submit" id="contactSubmit" data-submit="...Sending"></button>
+                </fieldset>
+            </form>
+            <?php include "secure_email.php" ?>
+        </div>
+    </div>
+    
+    <div id="resume" class="transitionLeft">
+        <a id="resumeReturn"></a>
+        <div class="resume-button-container">
+            <div id="resumeButtonTop"></div>
+            <div id="resumeButtonBottom"></div>
+            <div id="resumeButtonLeft"></div>
+            <div id="resumeButtonRight"></div>
+            <span id="resumeButton"></span>
+            <div id="resumeExampleContainer">
+                <object id="resumeExample" type="application/pdf" data="/portfolio/PDF/AndrewGray_Resume_Example.pdf?#zoom=85&scrollbar=1&toolbar=0&navpanes=0">
+                    <p>There was a problem displaying the example resume PDF. Please contact me to view the full resume.</p>
+                </object>
+            </div>
+        </div>
+        
+        <div class="cv-button-container">
+            <div id="cvButtonTop"></div>
+            <div id="cvButtonBottom"></div>
+            <div id="cvButtonLeft"></div>
+            <div id="cvButtonRight"></div>
+            <span id="cvButton"></span>
+            <div id="cvExampleContainer">
+                <object id="cvExample" type="application/pdf" data="/portfolio/PDF/AndrewGrayCoverLetter-Example.pdf?zoom=85&scrollbar=1&toolbar=0&navpanes=0">
+                    <p>There was a problem displaying the example cover letter PDF. Please contact me to view the full cover letter.</p>
+                </object>
+            </div>
+        </div>
+    </div>
     
     <canvas id="hexBackground"></canvas>
     <canvas id="transitionCanvas"></canvas>
@@ -111,5 +175,8 @@
     <script src="scripts/base64Corruption.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/projects.js"></script>
+    <script src="scripts/about.js"></script>
+    <script src="scripts/contact.js"></script>
+    <script src="scripts/resume.js"></script>
 </body>
 </html>

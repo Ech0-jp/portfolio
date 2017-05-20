@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var checkPosInterval;
     // Make sure that the element doesn't go above the page.
     function CheckPos() {
         var titlePosY = $("#titlePositionDummy").position().top;
@@ -112,7 +113,6 @@ $(document).ready(function(){
             });
         }
     }
-    setInterval(CheckPos, 100);
     
     // Menu functionality
     var menu = $(".menu");
@@ -126,7 +126,7 @@ $(document).ready(function(){
     var targetRight = 451.5;
     
     var borderHeight = 50;
-    var targetBorderHeight = 100;
+    var targetBorderHeight = 98;
     
     function expandMenu(){
         menu.css(
@@ -134,7 +134,7 @@ $(document).ready(function(){
         );
         menu.animate({
             height: targetHeight,
-            top: 50
+            top: 48
         }, 500, function(){
             menu.animate({
                 width: targetWidth,
@@ -183,6 +183,19 @@ $(document).ready(function(){
                 }, 500);
             });
         }, 500);
+    }
+    
+    window.StartProjectsFunctions = function(){
+        checkPosInterval = setInterval(CheckPos, 100);
+    }
+    
+    window.StopProjectsFunctions = function(){
+        if (expanded){
+            closeMenu();
+            expanded = false;
+            menuAnimating = true;
+        }
+        clearInterval(checkPosInterval);
     }
     
     $(".menu-title").click(function(){
@@ -279,6 +292,7 @@ var projectDescriptions = [
 ];
 
 function ProjectsTransition(){
+    StartProjectsFunctions();
     document.getElementById("projects").style.visibility = "visible";
     
     AnimateText(document.getElementById("projectsText"), projectDescriptions[0], 2, true);
@@ -287,15 +301,40 @@ function ProjectsTransition(){
     document.getElementById("projectsDownload").href = projectsHrefs[0];
     AnimateText(document.getElementById("projectsTitle"), projectTitles[0]);
     AnimateText(document.getElementById("projectsFooter"), "Projects");
-    $("#projectsImagesBackground, #projectsImages, #projectsImageBorder").css("webkitAnimationPlayState", "running");
-    $("#menuBorderTop, #menuBorderBottom").css("webkitAnimationPlayState", "running");
-    setTimeout(function(){
-        $("#menuBorderLeft, #menuBorderRight").css("webkitAnimationPlayState", "running");
+    
+    $("#projectsImagesBackground, #projectsImages, #projectsImageBorder").css({
+        'animation': 'imageBorder 1s ease',
+        'animation-play-state': 'running'
+    });
+    $("#menu-title").animate({
+        height: '51px'
+    }, 250, null, function(){
+        $("#menuBorderTop").css({
+            'animation': 'buttonTop 0.5s ease',
+            'animation-play-state': 'running'
+        });
+        $("#menuBorderBottom").css({
+            'animation': 'buttonBottom 0.5s ease',
+            "animation-play-state": 'running'
+        });
         setTimeout(function(){
-            AnimateText(document.getElementById("menu-title"), "Menu");
-            $(".menu").css("border", "3px solid white");
+            $("#menuBorderLeft").css({
+                'animation': 'buttonLeft 0.5s ease',
+                'animation-play-state': 'running'
+            });
+            $("#menuBorderRight").css({
+                'animation': 'buttonRight 0.5s ease',
+                "animation-play-state": 'running'
+            });
+            setTimeout(function(){
+                AnimateText(document.getElementById("menu-title"), "Menu");
+                $(".menu").css("border", "3px solid white");
+                $("#menuBorderTop, #menuBorderBottom, #menuBorderLeft, #menuBorderRight").css({
+                    'animation': 'none'
+                });
+            }, 500);
         }, 500);
-    }, 500);
+    });
 }
 
 function ChangeProject(index){
@@ -324,15 +363,53 @@ function ChangeProject(index){
 function StopProjects(){
     document.getElementById("projects").style.visibility = "collapse";
     
+    $("#menu-title").css({
+        height: '0'
+    });
+    
+    $("#projectsImagesBackground, #projectsImages, #projectsImageBorder").css({
+        'animation': 'imageBorder 1s ease',
+        'animation-play-state': 'paused'
+    });
+    $("#menuBorderTop").css({
+        'animation': 'buttonTop 0.5s ease',
+        'animation-play-state': 'paused'
+    });
+    $("#menuBorderBottom").css({
+        'animation': 'buttonBottom 0.5s ease',
+        'animation-play-state': 'paused'
+    });
+    $("#menuBorderLeft").css({
+        'animation': 'buttonLeft 0.5s ease',
+        'animation-play-state': 'paused'
+    });
+    $("#menuBorderRight").css({
+        'animation': 'buttonRight 0.5s ease',
+        'animation-play-state': 'paused'
+    });
+    
+    $(".menu").css("border", "");
+    
+    document.getElementById("menu-title").innerHTML = "";
     document.getElementById("projectsText").innerHTML = "";
     document.getElementById("projectsSubtitle").innerHTML = "";
     document.getElementById("projectsDownload").innerHTML = "";
     document.getElementById("projectsTitle").innerHTML = "";
     document.getElementById("projectsFooter").innerHTML = "";
+    
+    StopProjectsFunctions();
 }
 
 $("#projectsFooter").click(function(){
     StartTransition("up", "main");
+    $(this).css({
+        'pointer-events': 'none'
+    });
+    setTimeout(function(){
+        $("#projectsFooter").css({
+            'pointer-events': 'all'
+        })
+    }, 1000);
 });
 
 

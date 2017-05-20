@@ -87,7 +87,7 @@ $(document).ready(function(){
     function RunMatrix(){
         if (typeof Game_Interval != "undefined")
             clearInterval(Game_Interval);
-        Game_Interval = setInterval(draw, 33);
+        Game_Interval = setInterval(draw, 25);
     }
     
     window.StopMatrix = function(){
@@ -95,12 +95,15 @@ $(document).ready(function(){
     }
     
     window.StartMatrix = function(){
-        Game_Interval = setInterval(draw, 33);
+        Game_Interval = setInterval(draw, 25);
     }
     
     $("#btnEnter").click(function(){
         $("#btnEnter").addClass("no-hover");
         StartTransition("down", "entry");
+        $(this).css({
+            'pointer-events': 'none'
+        });
     });
 });
 
