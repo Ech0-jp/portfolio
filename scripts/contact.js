@@ -70,4 +70,14 @@ $("#contact-header").click(function(){
     }, 1000);
 });
 
-ContactTransition();
+$("#contactForm").submit(function(e){
+    $.ajax({
+        url: "https://formspree.io/hit-the-hills@hotmail.ca",
+        method: "POST",
+        data: $(this).serialize(),
+        dataType: "json"
+    });
+    e.preventDefault();
+    $(this).get(0).reset();
+    // MESSAGE SUCCESS !!!
+});
