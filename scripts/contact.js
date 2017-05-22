@@ -69,3 +69,5 @@ $("#contact-header").click(function(){
         })
     }, 1000);
 });
+
+ContactTransition();

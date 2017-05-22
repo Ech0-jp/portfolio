@@ -82,7 +82,7 @@ $(document).ready(function(){
         
     };
     
-    RunMatrix();
+    //RunMatrix();
     
     function RunMatrix(){
         if (typeof Game_Interval != "undefined")
