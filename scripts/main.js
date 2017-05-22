@@ -3,13 +3,13 @@ var maxErrors = 100;
 var margin = 2200;
 var emptyImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABA‌​AACAUwAOw==";
 var imageSources = [
-    "/portfolio/images/main/softwareDeveloper.jpg", 
-    "/portfolio/images/main/gameDeveloper.png", 
-    "/portfolio/images/main/unityLogo.png",
-    "/portfolio/images/main/cSharp.jpg",
-    "/portfolio/images/main/cPlusPlus.jpg",
-    "/portfolio/images/main/js.jpg",
-    "/portfolio/images/main/html-css.jpg"];
+    "./images/main/softwareDeveloper.jpg", 
+    "./images/main/gameDeveloper.png", 
+    "./images/main/unityLogo.png",
+    "./images/main/cSharp.jpg",
+    "./images/main/cPlusPlus.jpg",
+    "./images/main/js.jpg",
+    "./images/main/html-css.jpg"];
 var imageSourcesBase64 = null;
 var imageIndex = 0;
 var corruptImageInterval;
@@ -22,7 +22,7 @@ if (imageSourcesBase64 === null) {
     }
 }
 
-function toBase64(src, callback, outputformat){
+function toBase64(src, callback, outputformat, target = null){
     var img = new Image();
     img.crossOrigin = 'Anonymous';
     img.onload = function() {
@@ -33,7 +33,7 @@ function toBase64(src, callback, outputformat){
         canvas.width = this.width;
         ctx.drawImage(this, 0, 0);
         dataURL = canvas.toDataURL(outputformat);
-        callback(dataURL);
+        callback(dataURL, target);
     };
     img.src = src;
     if (img.complete || img.complete === undefined) {

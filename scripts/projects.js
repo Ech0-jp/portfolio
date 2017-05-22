@@ -240,7 +240,58 @@ $(document).ready(function(){
 
 var projectIndex = 0;
 var projectChangeTimeout = [3000, 2000, 3000, 1500, 1500, 2000, 600];
-var projectImages = [];
+var projectImageIndex = 0;
+var stopProjects = false;
+var projectImageInterval;
+var projectImage = document.getElementById("projectsImages");
+var projectsVideo = document.getElementById("projectsVideo");
+var projectImages = [
+    //MAV
+    [
+        "./images/projects/MyAnimeViewer/MAV_userlist.jpg",
+        "./images/projects/MyAnimeViewer/MAV_Browse.jpg",
+        "./images/projects/MyAnimeViewer/MAV_information.jpg",
+        "./images/projects/MyAnimeViewer/MAV_video.png"
+    ],
+    //Hammerfist
+    [
+        "https://www.youtube.com/embed/zSsxq4Cf8wg"
+    ],
+    //Frogger
+    [
+        "./images/projects/Frogger/frogger_maingame.png",
+        "./images/projects/Frogger/frogger_bossstart.png",
+        "./images/projects/Frogger/frogger_boss1.png",
+        "./images/projects/Frogger/frogger_boss2.png",
+        "./images/projects/Frogger/frogger_endboss.png"
+    ],
+    //Match 3
+    [
+        "./images/projects/Match3/match3_menu.png",
+        "./images/projects/Match3/match3_game.png",
+        "./images/projects/Match3/match3_win.png"
+    ],
+    //Asteroids
+    [
+        "./images/projects/Asteroids/asteroids_menu.png",
+        "./images/projects/Asteroids/asteroids_game1.png",
+        "./images/projects/Asteroids/asteroids_game2.png"
+    ],
+    //Blackjack
+    [
+        "./images/projects/blackjack/blackjack_menu.jpg",
+        "./images/projects/blackjack/blackjack_table.jpg",
+        "./images/projects/blackjack/blackjack_dealerwon.jpg",
+        "./images/projects/blackjack/blackjack_playerwon.jpg"
+    ],
+    //Memory Game
+    [
+        "./images/projects/memorygame/memorygame_menu.jpg",
+        "./images/projects/memorygame/memorygame_start.jpg",
+        "./images/projects/memorygame/memorygame_gameplay.jpg"
+    ]
+];
+var projectsImagesBase64 = null;
 var projectTitles = ["MyAnimeViewer", "Hammerfist", "Frogger", "Match 3", "Asteroids", "Blackjack", "Memory Game"];
 var projectsSubtitles = [
     //MAV
@@ -291,7 +342,23 @@ var projectDescriptions = [
     "The first thing I ever programed and during my first year of college. It's a simple game where the player has to match the hidden tiles on the game board. I implemented a few game modes in this so the rules may vary depending on the game mode that is played."
 ];
 
+if (projectsImagesBase64 == null){
+    projectsImagesBase64 = new Array();
+    for(var i = 0; i < projectImages.length; i++){
+        projectsImagesBase64[i] = new Array();
+    }
+    for(var x = 0; x < projectImages.length; x++){
+        for(var y = 0; y < projectImages[x].length; y++){
+            if (projectImages[x][y].includes("youtube"))
+                break;
+            
+            toBase64(projectImages[x][y], function(dataURL, target){ target.push(dataURL); }, "image/jpeg", projectsImagesBase64[x]);
+        }
+    }
+}
+
 function ProjectsTransition(){
+    projectImageIndex = projectIndex = 0;
     StartProjectsFunctions();
     document.getElementById("projects").style.visibility = "visible";
     
@@ -302,28 +369,32 @@ function ProjectsTransition(){
     AnimateText(document.getElementById("projectsTitle"), projectTitles[0]);
     AnimateText(document.getElementById("projectsFooter"), "Projects");
     
+    setTimeout(() => {
+        ProjectImages();
+    }, projectChangeTimeout[0]);
+    
     $("#projectsImagesBackground, #projectsImages, #projectsImageBorder").css({
-        'animation': 'imageBorder 1s ease',
         'animation-play-state': 'running'
     });
+    setTimeout(() => {
+        $("#projectsImagesBackground, #projectsImages, #projectsImageBorder").css({
+            'animation': 'none'
+        });
+    }, 1000);
     $("#menu-title").animate({
         height: '51px'
     }, 250, null, function(){
         $("#menuBorderTop").css({
-            'animation': 'buttonTop 0.5s ease',
             'animation-play-state': 'running'
         });
         $("#menuBorderBottom").css({
-            'animation': 'buttonBottom 0.5s ease',
             "animation-play-state": 'running'
         });
         setTimeout(function(){
             $("#menuBorderLeft").css({
-                'animation': 'buttonLeft 0.5s ease',
                 'animation-play-state': 'running'
             });
             $("#menuBorderRight").css({
-                'animation': 'buttonRight 0.5s ease',
                 "animation-play-state": 'running'
             });
             setTimeout(function(){
@@ -337,7 +408,10 @@ function ProjectsTransition(){
     });
 }
 
+var changingProject = false;
 function ChangeProject(index){
+    changingProject = true;
+    
     var title = document.getElementById("projectsTitle");
     var subtitle = document.getElementById("projectsSubtitle");
     var download = document.getElementById("projectsDownload");
@@ -357,11 +431,65 @@ function ChangeProject(index){
         }
         AnimateText(text, projectDescriptions[index], 2, true);
         projectIndex = index;
+        setTimeout(() => {
+            changingProject = false;
+        }, projectChangeTimeout[projectIndex]);
     }, projectChangeTimeout[projectIndex]);
+}
+
+var currentlyDisplaying = "";
+function ProjectImages(){
+    if (stopProjects){
+        projectImage.src = "#";
+        return;
+    }
+    
+    if (changingProject){
+        projectImage.src = "#";
+        setTimeout(() => { ProjectImages(); }, 250);
+        return;
+    }
+    
+    if (projectImages[projectIndex][0].includes("youtube")){
+        if (currentlyDisplaying != "video"){
+            projectImage.src = "#";
+            projectImage.style.visibility = "collapse";
+            projectsVideo.style.visibility = "visible";
+            projectsVideo.src = projectImages[projectIndex][0];
+            clearInterval(projectImageInterval);
+            currentlyDisplaying = "video";
+        }
+        setTimeout(() => { ProjectImages(); }, 1000);
+        return;
+    } else if (currentlyDisplaying != "image") {
+        projectImage.style.visibility = "visible";
+        projectsVideo.style.visibility = "collapse";
+        projectsVideo.src = "#";
+        currentlyDisplaying = "image";
+    }
+    
+    projectImage.src = projectsImagesBase64[projectIndex][projectImageIndex];
+    setTimeout(() => {
+        if (projectImageInterval)
+            clearInterval(projectImageInterval);
+        projectImageInterval = setInterval(() => base64Corruption(projectsImagesBase64[projectIndex][projectImageIndex], projectImage), 26);
+        
+        setTimeout(() => {
+            projectImageIndex++;
+            if (projectImageIndex >= projectsImagesBase64[projectIndex].length)
+                projectImageIndex = 0;
+            
+            setTimeout(() => {
+                clearInterval(projectImageInterval);
+                ProjectImages();
+            }, 1000);
+        }, 1000);
+    }, 4000);
 }
 
 function StopProjects(){
     document.getElementById("projects").style.visibility = "collapse";
+    stopProjects = true;
     
     $("#menu-title").css({
         height: '0'

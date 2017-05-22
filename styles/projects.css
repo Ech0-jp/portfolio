@@ -119,6 +119,18 @@
     z-index: 1;
     animation: imageBorder 1s ease;
     animation-play-state: paused;
+    pointer-events: none;
+}
+
+#projectsImgScroller iframe {
+    position: absolute;
+    width: 640px;
+    height: 360px;
+    transform: translate(50px, 50%);
+    bottom: 50%;
+    visibility: collapse;
+    pointer-events: all;
+    border: 0px solid;
 }
 
 #projectsImagesBackground {
