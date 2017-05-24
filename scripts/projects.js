@@ -224,13 +224,22 @@ $(document).ready(function(){
     });
     
     $("#projectsDownload").hover(function(){
-        var y = $(this).position().top;
+//        var y = $(this).position().top;
+        var letterSpacing;
+        var left;
+        if (document.getElementById("projectsDownload").innerHTML.includes("Github")){
+            letterSpacing = '94px';
+            left = '-200px';
+        } else {
+            letterSpacing = '65px';
+            left = '-200px';
+        }
         $(this).stop(true, false).animate({
-            letterSpacing: '65px',
-            left: '-200px'
+            letterSpacing: letterSpacing,
+            left: left
         }, 500);
     }, function(){
-        var y = $(this).position().top;
+//        var y = $(this).position().top;
         $(this).stop(true, false).animate({
             letterSpacing: '5px',
             left: ''
@@ -319,9 +328,9 @@ var projectsHrefs = [
     //Match 3
     "https://www.dropbox.com/s/llyroy5acq07lw4/K-On%21%20Match%203.rar?dl=0",
     //Asteroids
-    "https://www.dropbox.com/s/352n7ykr7cwe5nz/Asteroids.rar?dl=0",
+    "https://github.com/Ech0-jp/Asteroids",
     //Blackjack
-    "https://www.dropbox.com/s/u6w615fphneokul/Blackjack.rar?dl=0",
+    "https://github.com/Ech0-jp/Blackjack",
     //Memory Game
     "https://www.dropbox.com/s/p37oqsqiff41rnf/Memory%20Game.rar?dl=0"
 ];
@@ -426,7 +435,10 @@ function ChangeProject(index){
         AnimateText(title, projectTitles[index]);
         AnimateText(subtitle, projectsSubtitles[index]);
         if (projectsHrefs[index] != ""){
-            AnimateText(download, "Download");
+            if (projectsHrefs[index].includes("github"))
+                AnimateText(download, "Github");
+            else
+                AnimateText(download, "Download");
             document.getElementById("projectsDownload").href = projectsHrefs[index];
         }
         AnimateText(text, projectDescriptions[index], 2, true);
