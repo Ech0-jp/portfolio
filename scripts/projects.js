@@ -320,11 +320,11 @@ var projectsSubtitles = [
 ];
 var projectsHrefs = [
     //MAV
-    "https://www.dropbox.com/s/b1ryjmwocmulcyx/MyAnimeViewer.rar?dl=0",
+    "https://github.com/Ech0-jp/MyAnimeViewer",
     //Hammerfist
     "",
     //Frogger
-    "https://www.dropbox.com/s/r93s24yydnlrnt0/Frogger.rar?dl=0",
+    "https://github.com/Ech0-jp/Madoka-Magica-Frogger",
     //Match 3
     "https://www.dropbox.com/s/llyroy5acq07lw4/K-On%21%20Match%203.rar?dl=0",
     //Asteroids
