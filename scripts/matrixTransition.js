@@ -106,7 +106,10 @@ function TransitionDown(page) {
             
             // START ANIMATIONS FOR NEW PAGE
             if (drops[i] == 1){
+                console.log("drops[i] == 1");
                 if (i == columns - 1 && !animated){
+                    console.log("Starting animations for new page!");
+                    console.log("Target page: " + page);
                     if (page == "projects") {
                         ProjectsTransition();
                     } else if (page == "main" || page == "entry") {
