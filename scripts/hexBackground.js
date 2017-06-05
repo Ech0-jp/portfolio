@@ -30,6 +30,7 @@ var AnimatedHexGrid = function(){
 }
 
 function StartHexInterval(){
+    animated = true;
     hexInterval = setInterval(AnimatedHexGrid, 33);
 }
 

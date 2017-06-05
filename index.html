@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/loading.css">
     <link rel="stylesheet" href="styles/entry.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/projects.css">
@@ -26,19 +27,12 @@
 </head>
 
 <body>
-    <div class="image-preloader">
-        <img src="images/HexBackground.png">
-        <img src="images/main/cPlusPlus.jpg">
-        <img src="images/main/cSharp.jpg">
-        <img src="images/main/gameDeveloper.png">
-        <img src="images/main/html-css.jpg">
-        <img src="images/main/js.jpg">
-        <img src="images/main/softwareDeveloper.jpg">
-        <img src="images/main/unityLogo.png">
-    </div>
+    <div class="loading" data-text="LOADING">LOADING...</div>
     
     <div id="entry">
-        <canvas id="matrix"></canvas>
+        <canvas id="matrix">
+            This website does not support your browser. Please use the latest version of Google Chrome or Firefox to view this site.
+        </canvas>
         <div id="entryContent">
             <div id="contentBacking"></div>
             <div id="contentBackingBorderHorizontal"></div>

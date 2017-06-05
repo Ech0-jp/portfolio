@@ -82,7 +82,13 @@ $(document).ready(function(){
         
     };
     
-    RunMatrix();
+    //load screen and shit.
+    window.onload = function(){
+        $(".loading").css({
+            'visibility': 'collapse'
+        });
+        RunMatrix(); 
+    }
     
     function RunMatrix(){
         if (typeof Game_Interval != "undefined")

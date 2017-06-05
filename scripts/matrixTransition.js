@@ -109,7 +109,6 @@ function TransitionDown(page) {
                         MainTransition();
                     }
                     StartHexInterval();
-                    animated = true;
                 }
             }
             
@@ -180,7 +179,6 @@ function TransitionUp(page){
                         ContactTransition();
                     }
                     StartHexInterval();
-                    animated = true;
                 }
             }
             
@@ -222,7 +220,6 @@ function TransitionLeft(page){
                     StopMain();
                 }
                 hexBackground.style.visibility = "visible";
-                fadeIn = false;
             }
             dropsY[i]--;
         }
@@ -250,7 +247,6 @@ function TransitionLeft(page){
                         AboutTransition();
                     }
                     StartHexInterval();
-                    animated = true;
                 }
             }
             
@@ -317,7 +313,6 @@ function TransitionRight(page){
                         ResumeTransition();
                     }
                     StartHexInterval();
-                    animated = true;
                 }
             }
             
