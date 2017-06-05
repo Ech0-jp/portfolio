@@ -36,6 +36,8 @@ function StartHexInterval(){
 }
 
 function ClearHexInterval(){
+    if (!hexInterval)
+        return;
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0, width, height);

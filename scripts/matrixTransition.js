@@ -19,11 +19,13 @@ var dropsY = [];
 
 var fadeIn = true;
 var animated = false;
+var cleared = false;
 var transitionInterval;
 
 function ResetTransition() {
     fadeIn = true;
     animated = false;
+    cleared = false;
     context.clearRect(0,0,width,height);
 }
 
@@ -69,7 +71,7 @@ function TransitionDown(page) {
             context.fillText(text, i * fontSize, drops[i] * fontSize);
             
             // HIDE ELEMENTS OF OLD PAGE
-            if (drops[i] * fontSize > transitionCanvas.height + 50) {
+            if (drops[i] * fontSize > transitionCanvas.height + 50 && !cleared) {
                 if (page == "entry") {
                     document.getElementById("entry").style.visibility = "collapse";
                     StopMatrix();
@@ -82,6 +84,7 @@ function TransitionDown(page) {
                 }
                 hexBackground.style.visibility = "visible";
                 fadeIn = false;
+                cleared = true;
             }
             
             drops[i]++;
