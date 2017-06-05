@@ -43,7 +43,6 @@ function toBase64(src, callback, outputformat, target = null){
 }
 
 function MainTransition(){
-    console.log("MainTransition() called.");
     stopMain = false;
     document.getElementById("main").style.visibility = "visible";
     $("#mainImageBorder, #mainImagesBackground, #mainImages").css({

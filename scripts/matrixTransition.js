@@ -11,8 +11,8 @@ var japanese = "あいうえおかきくけこさしすせそがぎぐげごぱ�
 japanese = japanese.split("");
 
 var fontSize = 10;
-var columns = transitionCanvas.width / fontSize;
-var rows = transitionCanvas.height / fontSize;
+var columns = Math.round(transitionCanvas.width / fontSize);
+var rows = Math.round(transitionCanvas.height / fontSize);
 
 var drops = [];
 var dropsY = [];
@@ -30,7 +30,6 @@ function ResetTransition() {
 }
 
 function StartTransition(direction, targetPage){
-    console.log("direction: " + direction + " target: " + targetPage);
     ResetTransition();
     transitionCanvas.style.visibility = "visible";
     switch(direction){
@@ -106,12 +105,7 @@ function TransitionDown(page) {
             
             // START ANIMATIONS FOR NEW PAGE
             if (drops[i] == 1){
-                console.log("drops[i] == 1");
-                console.log("i = " + i + " columns = " + columns);
-                console.log("animated = " + animated);
                 if (i == columns - 1 && !animated){
-                    console.log("Starting animations for new page!");
-                    console.log("Target page: " + page);
                     if (page == "projects") {
                         ProjectsTransition();
                     } else if (page == "main" || page == "entry") {
