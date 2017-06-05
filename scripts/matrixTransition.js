@@ -107,6 +107,8 @@ function TransitionDown(page) {
             // START ANIMATIONS FOR NEW PAGE
             if (drops[i] == 1){
                 console.log("drops[i] == 1");
+                console.log("i = " + i + " columns = " + columns);
+                console.log("animated = " + animated);
                 if (i == columns - 1 && !animated){
                     console.log("Starting animations for new page!");
                     console.log("Target page: " + page);
