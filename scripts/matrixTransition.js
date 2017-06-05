@@ -28,6 +28,7 @@ function ResetTransition() {
 }
 
 function StartTransition(direction, targetPage){
+    console.log("direction: " + direction + " target: " + targetPage);
     ResetTransition();
     transitionCanvas.style.visibility = "visible";
     switch(direction){
