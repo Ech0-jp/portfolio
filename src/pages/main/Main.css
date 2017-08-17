@@ -1,0 +1,12 @@
+.main {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    box-sizing: content-box;
+}
+
+.main p {
+    color: white;
+    font-size: 40px;
+}
