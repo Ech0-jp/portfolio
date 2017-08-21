@@ -19,6 +19,8 @@ class HexBackground extends Component {
         if (this.props.startInterval)
             this.interval = setInterval(() => { this._pulse() }, this.intervalTime);
         this.context = this.refs.canvas.getContext('2d');
+        this.context.fillStyle = 'black';
+        this.context.fillRect(0, 0, this.width, this.height);
     }
 
     componentWillUnmount(){
@@ -45,7 +47,7 @@ class HexBackground extends Component {
         return(
             <div className="hex-background">
                 <canvas ref="canvas" width={this.width} height={this.height} />
-                <img src={require('../../img/HexBackground.png')} />
+                <img src={require('../../img/HexBackground.png')} alt="" />
             </div>
         );
     }
