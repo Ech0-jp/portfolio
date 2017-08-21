@@ -15,9 +15,23 @@ class MatrixCanvas extends Component {
                     this.transitionDown(true).then(() => {
                         if (this.props.callback) this.props.callback();
                     });
-                    break;
-                default:
-
+                break;
+                case 'UP':
+                    console.log("MatrixCanvas componentDidMount case UP");
+                    this.transitionUp(true).then(() => {
+                        if (this.props.callback) this.props.callback();
+                    });
+                break;
+                case 'LEFT':
+                    // this.transitionLeft(true).then(() => {
+                    //     if (this.props.callback) this.props.callback();
+                    // });
+                break;
+                case 'RIGHT':
+                    // this.transitionRight(true).then(() => {
+                    //     if (this.props.callback) this.props.callback();
+                    // });
+                break;
             }
         }
     }
@@ -27,9 +41,8 @@ class MatrixCanvas extends Component {
     }
 
     init(props){
-        this.width = window.innerWidth
-        this.height = window.innerHeight;
-        window.addEventListener('resize', this.resize.bind(this), false);
+        this.width = window.screen.width
+        this.height = window.screen.height;
         this.japanese = "あいうえおかきくけこさしすせそがぎぐげごぱぴぷぺぽアイウエオカキクケコサシスセソガギグゲゴパピプペポ";
         this.japanese = this.japanese.split("");
 
@@ -54,20 +67,32 @@ class MatrixCanvas extends Component {
         if (props.intervalTime === undefined) {
             this.intervalTime = 25;
         } else {
-            this.intervalTime = props.interval;
+            this.intervalTime = props.intervalTime;
         }
 
-        this.columns = Math.floor(this.width / this.fontSize);
+        this.columns = Math.round(this.width / this.fontSize);
+        this.rows = Math.round(this.height / this.fontSize);
+
         this.drops = [];
-        for (var x = 0; x < this.columns; x++) {
-            this.drops[x] = 1;
-        }
-        this.initialized = true;
-    }
+        this.dropsY = [];
 
-    resize(){
-        this.width = window.innerWidth
-        this.height = window.innerHeight;
+        for (var x = 0; x < this.columns; x++) {
+            if (props.transition === "UP") {
+                this.drops[x] = this.rows;
+            } else {
+                this.drops[x] = 1;
+            }
+        }
+
+        for(var y = 0; y < this.rows; y++) {
+            if (props.transition === "LEFT") {
+                this.dropsY[y] = this.columns;
+            } else {
+                this.dropsY[y] = 0;
+            }
+        }
+
+        this.initialized = true;
     }
 
     fill(context) {
@@ -116,18 +141,22 @@ class MatrixCanvas extends Component {
                 this.transitionDownReverse().then(() => {
                     if (this.props.resolve) this.props.resolve();
                 });
-                break;
+            break;
             case 'UP':
-
-                break;
+                this.transitionUpReverse().then(() => {
+                    if (this.props.resolve) this.props.resolve();
+                });
+            break;
             case 'LEFT':
-
-                break;
+                this.transitionLeftReverse().then(() => {
+                    if (this.props.resolve) this.props.resolve();
+                });
+            break;
             case 'RIGHT':
-
-                break;
-            default:
-
+                this.transitionRightReverse().then(() => {
+                    if (this.props.resolve) this.props.resolve();
+                });
+            break;
         }
     }
 
@@ -183,6 +212,82 @@ class MatrixCanvas extends Component {
 
         transition();
         return d.promise();
+    }
+
+    //TRANSITION UP
+    transitionUp(extend = false){
+        console.log("MatrixCanvas transitionUp()");
+        var d = jQuery.Deferred();
+
+        var transition = () => {
+            const context = this.refs.canvas.getContext('2d');
+            context.fillStyle = this.bgColor;
+            var start = this.drops[0] * this.fontSize;
+            if (start <= 0) {
+                context.fillRect(0, 0, this.width, this.height);
+            } else {
+                context.fillRect(0, start, this.width, this.height - this.drops[0] * this.fontSize);
+            }
+            for (var i = 0; i < this.drops.length; i++) {
+                context.fillStyle = '#46eff4';
+                context.font = this.fontSize + 'px arial';
+                var text = this.japanese[Math.floor(Math.random() * this.japanese.length)];
+                context.fillText(text, i * this.fontSize, this.drops[i] * this.fontSize);
+                this.drops[i]--;
+            }
+
+            if ((this.drops[this.columns - 1] * this.fontSize <= 0 && !extend) ||
+                (this.drops[this.columns - 1] * this.fontSize < -this.height * 0.5 && extend)) {
+                d.resolve();
+            } else {
+                setTimeout(() => { transition() }, this.intervalTime);
+            }
+        }
+
+        transition();
+        return d.promise();
+    }
+    transitionUpReverse(){
+        var d = jQuery.Deferred();
+
+        var transition = () => {
+            const context = this.refs.canvas.getContext('2d');
+            context.clearRect(0, 0, this.width, this.height);
+            context.fillStyle = 'black';
+            context.fillRect(0, this.drops[0] * this.fontSize, this.width, this.height - this.drops[0] * this.fontSize);
+            for (var i = 0; i < this.drops.length; i++) {
+                context.fillStyle = '#46eff4';
+                context.font = this.fontSize + 'px arial';
+                var text = this.japanese[Math.floor(Math.random() * this.japanese.length)];
+                context.fillText(text, i * this.fontSize, this.drops[i] * this.fontSize);
+                this.drops[i]++;
+            }
+
+            if (this.drops[this.columns - 1] * this.fontSize > this.height)  {
+                d.resolve();
+            } else {
+                setTimeout(() => { transition() }, this.intervalTime);
+            }
+        }
+
+        transition();
+        return d.promise();
+    }
+
+    //TRANSITION LEFT
+    transitionLeft(extend = false){
+
+    }
+    transitionLeftReverse(){
+
+    }
+
+    //TRANSITION RIGHT
+    transitionRight(extend = false){
+
+    }
+    transitionRightReverse(){
+
     }
 
     render(){
