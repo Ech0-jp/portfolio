@@ -1,0 +1,11 @@
+.contact * {
+    z-index: 1;
+}
+.contact .div-extended-border {
+    width: 375px;
+    height: 460px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
