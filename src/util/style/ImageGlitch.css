@@ -1,0 +1,11 @@
+.image-glitch {
+    position: fixed;
+    z-index: 1;
+}
+
+.image-glitch img {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    -webkit-transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+    transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+}
