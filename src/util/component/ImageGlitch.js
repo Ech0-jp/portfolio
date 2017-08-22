@@ -12,17 +12,10 @@ class ImageGlitch extends Component {
         this.convertImages();
     }
 
-    componentDidMount(){
-        this.setState({width: this.props.width, height: this.props.height});
-        setTimeout(() => {
-            this.refs.img.src = this.imagesBase64[this.index];
-            this.imageInterval = setInterval(() => { this.corruptImage() }, 4000);
-        }, 500);
-    }
-
     componentWillUnmount(){
         clearInterval(this.corruptInterval);
         clearInterval(this.imageInterval);
+        clearTimeout(this.timeout);
     }
 
     convertImages(){
@@ -32,16 +25,24 @@ class ImageGlitch extends Component {
         }
     }
 
+    animate(){
+        this.setState({width: this.props.width, height: this.props.height});
+        setTimeout(() => {
+            this.refs.img.src = this.imagesBase64[this.index];
+            this.imageInterval = setInterval(() => { this.corruptImage() }, 4000);
+        }, 500);
+    }
+
     corruptImage(){
         this.corruptInterval = setInterval(() => { this.base64Corruption(this.imagesBase64[this.index], this.refs.img) }, 26);
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
             this.index += 1;
             if (this.index === this.imagesBase64.length) this.index = 0;
-            this.refs.img.src = this.imagesBase64[this.index];
+            if (this.refs.img) this.refs.img.src = this.imagesBase64[this.index];
         }, 1000);
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
             clearInterval(this.corruptInterval);
-            this.refs.img.src = this.imagesBase64[this.index];
+            if (this.refs.img) this.refs.img.src = this.imagesBase64[this.index];
         }, 2000);
     }
 
