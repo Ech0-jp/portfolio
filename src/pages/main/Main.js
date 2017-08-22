@@ -6,8 +6,19 @@ import ConsoleTextEffect from '../../util/ConsoleTextEffect';
 import './Main.css';
 
 class Main extends Component {
+    constructor(props){
+        super(props);
+        this.state = {transitionComplete: props.transitionComplete};
+    }
+
     componentDidMount(){
         if (this.props.loaded) this.props.loaded();
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (this.props !== nextProps) {
+            this.setState({transitionComplete: nextProps.transitionComplete});
+        }
     }
 
     onClick(src){
@@ -34,7 +45,7 @@ class Main extends Component {
     }
 
     _render(){
-        if (!this.props.transitionComplete) return;
+        if (!this.state.transitionComplete) return;
         var images = [
             require('../../img/main/cPlusPlus.jpg'),
             require('../../img/main/cSharp.jpg'),
@@ -46,20 +57,23 @@ class Main extends Component {
         ];
         if (!this.animated){
             setTimeout(() => {
+                this.refs.image.animate();
+            }, 5);
+            setTimeout(() => {
                 ConsoleTextEffect.AnimateText(this.refs.projects.DOM(), "Projects", 35);
                 ConsoleTextEffect.AnimateText(this.refs.contact.DOM(), "Contact", 35);
                 ConsoleTextEffect.AnimateText(this.refs.about.DOM(), "About", 35);
                 ConsoleTextEffect.AnimateText(this.refs.resume.DOM(), "Resume", 35);
                 this.animated = true;
-            }, 500);
+            }, 505);
         }
         return (
             <div className="main-container">
-                <ImageGlitch images={images} width="750px" height="422px"/>
-                <ExpandingTextButton ref="projects" className="projects" content="Projects" targetWidth="750" chevron={true} onClick={() => this.onClick("projects")} />
-                <ExpandingTextButton ref="contact" className="contact" content="Contact" targetWidth="750" chevron={true} onClick={() => this.onClick("contact")} />
-                <ExpandingTextButton ref="about" className="about" content="About" rotate="90" targetWidth="422" chevron={true} onClick={() => this.onClick("about")} />
-                <ExpandingTextButton ref="resume" className="resume" content="Resume" rotate="-90" targetWidth="422" chevron={true} onClick={() => this.onClick("resume")} />
+                <ImageGlitch ref="image" images={images} width="750px" height="422px"/>
+                <ExpandingTextButton ref="projects" className="projects" content="Projects" targetWidth="750" onClick={() => this.onClick("projects")} />
+                <ExpandingTextButton ref="contact" className="contact" content="Contact" targetWidth="750" onClick={() => this.onClick("contact")} />
+                <ExpandingTextButton ref="about" className="about" content="About" rotate="90" targetWidth="422" onClick={() => this.onClick("about")} />
+                <ExpandingTextButton ref="resume" className="resume" content="Resume" rotate="-90" targetWidth="422" onClick={() => this.onClick("resume")} />
             </div>
         );
     }
@@ -67,7 +81,7 @@ class Main extends Component {
     render(){
         return (
             <div className="main">
-                <HexBackground startInterval={this.props.transitionComplete}/>
+                <HexBackground startInterval={this.state.transitionComplete}/>
                 {this._render()}
             </div>
         );
