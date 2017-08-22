@@ -27,6 +27,14 @@ class HexBackground extends Component {
         if (this.interval) clearInterval(this.interval);
     }
 
+    componentWillReceiveProps(nextProps){
+        if (this.props !== nextProps) {
+            if (nextProps.startInterval){
+                this.interval = setInterval(() => { this._pulse() }, this.intervalTime);
+            }
+        }
+    }
+
     _pulse(){
         this.context.fillStyle = "rgba(0, 0, 0, 0.025)"
         this.context.fillRect(0, 0, this.width, this.height);
