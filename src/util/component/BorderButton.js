@@ -33,7 +33,7 @@ class BorderButton extends Component {
         });
 
         return (
-            <button id={this.props.id} className={classes}
+            <button id={this.props.id} className={classes} style={this.props.style}
                 onClick={this.props.onClick} ref={(instance) => { this.instance = instance }}>
                 {this.props.content}
             </button>
