@@ -22,7 +22,6 @@ class Main extends Component {
     }
 
     onClick(src){
-        console.log("Main onClick()");
         var direction;
         switch (src) {
             case 'projects':
@@ -58,7 +57,7 @@ class Main extends Component {
         if (!this.animated){
             setTimeout(() => {
                 this.refs.image.animate();
-            }, 5);
+            }, 25);
             setTimeout(() => {
                 ConsoleTextEffect.AnimateText(this.refs.projects.DOM(), "Projects", 35);
                 ConsoleTextEffect.AnimateText(this.refs.contact.DOM(), "Contact", 35);
