@@ -1,0 +1,23 @@
+.about .header {
+    position: fixed;
+    z-index: 1;
+    left: 25px;
+    top: 50%;
+    transform-origin: left center;
+}
+
+.about .text {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    max-width: 1000px;
+    min-width: 400px;
+    width: 100%;
+    position: absolute;
+    text-align: justify;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
