@@ -21,7 +21,7 @@ class ExpandingTextButton extends Component {
     marginTop(){
         return this.props.rotate < 0 ? -this.letterSpacing / 1.25 + "px" : this.letterSpacing / this.props.content.length + "px";
     }
-    
+
     render(){
         var style = {
             transform: 'rotateZ(' + this.props.rotate + 'deg)',
@@ -34,7 +34,7 @@ class ExpandingTextButton extends Component {
             }
         }
         return (
-            <a ref="dom" className={"expanding-text-button " + this.props.className} onClick={this.props.onClick} style={style} onMouseEnter={() => {this.hover(true)}} onMouseLeave={() => {this.hover(false)}}> </a>
+            <a ref="dom" className={"expanding-text-button " + this.props.className} onClick={this.props.onClick} style={[style, this.props.style]} onMouseEnter={() => {this.hover(true)}} onMouseLeave={() => {this.hover(false)}}> </a>
         );
     }
 }
