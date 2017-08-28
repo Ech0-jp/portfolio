@@ -54,21 +54,21 @@ class Contact extends Component {
         }, 1000);
         return (
             <div className="contact-container">
-                <ExpandingTextButton ref="header" className="header" content="Contact" targetWidth={width} chevron={true} onClick={() => this.onClick()} />
+                <ExpandingTextButton ref="header" className="header" content="Contact" targetWidth={width} onClick={() => this.onClick()} />
                 <DivExtendedBorder width={375} height={460} />
                 <form className="contact-form">
                     <h3 ref="h3"> </h3>
                     <fieldset>
-                        <input className="input" name="name" placeholder="Name/Company" type="text" tabindex="1" required autofocus />
+                        <input className="input" name="name" placeholder="Name/Company" type="text" tabIndex="1" required autofocus />
                     </fieldset>
                     <fieldset>
-                        <input name="email" placeholder="Email" type="email" tabindex="2" required />
+                        <input name="email" placeholder="Email" type="email" tabIndex="2" required />
                     </fieldset>
                     <fieldset>
-                        <input name="sub" placeholder="Subject" type="text" tabindex="3" required />
+                        <input name="sub" placeholder="Subject" type="text" tabIndex="3" required />
                     </fieldset>
                     <fieldset>
-                        <textarea name="msg" placeholder="Message" type="text" tabindex="4" required />
+                        <textarea name="msg" placeholder="Message" type="text" tabIndex="4" required />
                     </fieldset>
                     <fieldset>
                         <button ref="btnSubmit" className="submit" type="submit" onSubmit={(e) => { this.onSubmit(e) }} />
