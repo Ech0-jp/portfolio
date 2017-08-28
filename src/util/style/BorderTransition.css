@@ -17,7 +17,7 @@
 .border-transition {
     -webkit-transition: color 0.25s;
     transition: color 0.25s;
-    color: #60daaa;
+    color: aqua;
 }
 .border-transition::before, .border-transition::after{
     border: 2px solid transparent;
@@ -27,16 +27,16 @@
 .border-transition::before{
     top: 0;
     left: 0;
-    border-top-color: #60daaa;
-    border-right-color: #60daaa;
+    border-top-color: aqua;
+    border-right-color: aqua;
     -webkit-transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
     transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
 }
 .border-transition::after{
     bottom: 0;
     right: 0;
-    border-bottom-color: #60daaa;
-    border-left-color: #60daaa;
+    border-bottom-color: aqua;
+    border-left-color: aqua;
     -webkit-transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
     transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
 }
