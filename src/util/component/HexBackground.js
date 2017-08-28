@@ -16,11 +16,11 @@ class HexBackground extends Component {
     }
 
     componentDidMount(){
-        if (this.props.startInterval)
+        if (this.props.startInterval && !this.interval)
             this.interval = setInterval(() => { this._pulse() }, this.intervalTime);
-        this.context = this.refs.canvas.getContext('2d');
-        this.context.fillStyle = 'black';
-        this.context.fillRect(0, 0, this.width, this.height);
+        var context = this.refs.canvas.getContext('2d');
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, this.width, this.height);
     }
 
     componentWillUnmount(){
@@ -29,26 +29,31 @@ class HexBackground extends Component {
 
     componentWillReceiveProps(nextProps){
         if (this.props !== nextProps) {
-            if (nextProps.startInterval){
+            if (nextProps.startInterval && !this.interval){
                 this.interval = setInterval(() => { this._pulse() }, this.intervalTime);
             }
         }
     }
 
     _pulse(){
-        this.context.fillStyle = "rgba(0, 0, 0, 0.025)"
-        this.context.fillRect(0, 0, this.width, this.height);
-        this.context.strokeStyle = "rgba(70, 239, 244, 0.05)";
+        try {
+            var context = this.refs.canvas.getContext('2d');
+            context.fillStyle = "rgba(0, 0, 0, 0.025)";
+            context.fillRect(0, 0, this.width, this.height);
+            context.strokeStyle = "rgba(70, 239, 244, 0.05)";
 
-        this.context.beginPath();
-        this.context.arc(window.innerWidth/2, window.innerHeight/2, this.radius < 0 ? 0 : this.radius, 0, 2*Math.PI);
-        this.context.lineWidth = 100;
-        this.context.closePath();
-        this.context.stroke();
+            context.beginPath();
+            context.arc(window.innerWidth/2, window.innerHeight/2, this.radius < 0 ? 0 : this.radius, 0, 2*Math.PI);
+            context.lineWidth = 100;
+            context.closePath();
+            context.stroke();
 
-        this.radius += this.reverse ? -6 : 6;
-        if (this.radius > this.width * 0.75 || this.radius < 0)
-            this.reverse = !this.reverse;
+            this.radius += this.reverse ? -6 : 6;
+            if (this.radius > this.width * 0.75 || this.radius < 0)
+                this.reverse = !this.reverse;
+        } catch(e) {
+            return;
+        }
     }
 
     render(){
