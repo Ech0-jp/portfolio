@@ -97,13 +97,14 @@ class PDFContainer extends Component {
         }
         var classes = classNames(
             'button', {
-            'button-active': this.state.opened
-        });
+                'button-active': this.state.opened
+            }
+        );
         var pdfClass = classNames(
             'pdf', {
                 'pdf-active': this.state.showPDF
             }
-        )
+        );
 
         return (
             <div className={this.props.className + " pdf-container"}>
