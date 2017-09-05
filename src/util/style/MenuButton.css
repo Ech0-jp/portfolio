@@ -1,0 +1,39 @@
+.menu-button .border-transition {
+    background-color: black;
+    transition: background-color 0.5s linear 0.5s;
+}
+
+.pdf-container .button {
+    position: absolute;
+    z-index: 2;
+}
+.menu-button .button-active::after {
+    border-bottom-color: transparent;
+}
+
+.menu-button .button-menu-options {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    border: none;
+    transition: all 0.25s;
+}
+.menu-button .button-menu-options-active {
+    border: 2px solid aqua;
+}
+
+.menu-button .button-menu-options-item {
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    color: aqua;
+    font-size: 14px;
+    font-weight: 600;
+}
+.menu-button .button-menu-options-item:hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+}
