@@ -92,7 +92,6 @@ class ImageGlitch extends Component {
 
     _render() {
         if (!this.state.video) return;
-        var style = {width: this.state.width, height: this.state.height};
         return <iframe title="video" src={this.props.images[0]} width={this.state.width} height={this.state.height} frameBorder="0" allowFullScreen />
     }
 
