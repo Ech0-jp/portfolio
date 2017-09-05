@@ -44,7 +44,7 @@ class Resume extends Component {
     }
 
     onClick(){
-        window.location.hash = "#" + "main";
+        window.location.hash = "#main";
         this.props.changePage("main", "LEFT");
     }
 

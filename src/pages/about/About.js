@@ -41,7 +41,7 @@ class About extends Component {
     }
 
     onClick(){
-        window.location.hash = "#" + "main";
+        window.location.hash = "#main";
         this.props.changePage("main", "RIGHT");
     }
 
