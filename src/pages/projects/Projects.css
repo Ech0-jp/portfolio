@@ -1,0 +1,59 @@
+.projects .header {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+.projects .image-glitch {
+    position: fixed;
+    left: 350px;
+    top: 50%;
+}
+
+.projects .menu {
+    z-index: 1;
+    position: fixed;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+}
+
+.projects .title {
+    position: fixed;
+    z-index: 1;
+    color: white;
+    left: 45px;
+    top: calc(50% - 275px);
+}
+
+.projects .subtitle {
+    position: fixed;
+    z-index: 1;
+    color: white;
+    left: 45px;
+    top: calc(50% - 230px);
+}
+
+.projects .download {
+    position: fixed;
+    z-index: 1;
+    color: white;
+    left: 350px;
+    top: calc(50% + 190px);
+    transform: translateX(-50%);
+}
+
+.projects .description {
+    position: absolute;
+    z-index: 1;
+    width: calc(100% - 790px);
+    min-width: 500px;
+    bottom: 50%;
+    transform: translate(740px, 50%);
+    color: white;
+    text-align: justify;
+    font-size: 17px
+
+}
