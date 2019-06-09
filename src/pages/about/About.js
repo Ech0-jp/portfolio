@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import HexBackground from '../../util/component/HexBackground';
-import ExpandingTextButton from '../../util/component/ExpandingTextButton';
+import AnimatedTextBlock from '../../util/component/AnimatedTextBlock';
 import ConsoleTextEffect from '../../util/ConsoleTextEffect';
+import ExpandingTextButton from '../../util/component/ExpandingTextButton';
+import HexBackground from '../../util/component/HexBackground';
 import './About.css';
 
 var Radium = require('radium');
@@ -48,16 +49,18 @@ class About extends Component {
     _render(){
         if (!this.state.transitionComplete) return;
 
-        var text = "Hi, my name is Robert Andrew Gray, I go by the name \"Andrew\". I am a fresh graduate from George Brown College in T127 - Computer Programming Analyst. Originally, I went to GBC to become a Game Programmer. However, at the end of my second year in T163 Game Programming, I decided that it would be best to broaden my scope. So I transferred into year 2 of T127 so I could have more opportunities.<br><br>" +
-        "Throughout my two years spent as a Game Programmer, I recieved an internship with a subsidiary of 13AM Games. It was extermely fun and very challenging as we were working with a new technology called the \"Myo Armband\". At first, we were a team of 8; the Lead developr, two 2nd year student programmers, two 3rd year student programmers, 2 artists and a sound developr. In the first 6 months, I helped the other 2nd year student Steve develop gameplay mechanics with the Myo Armband as well as develop the User Interface for the game, while the 3rd years handled the devlopment of the Artificial Intelligence. At the end of those 6 months, the 3rd programmers graduated and left the team. In which, I took over for the AI development while finishing up what was left for the UI. Unfortunatley, at the end of my second year, when I transferred courses and had to say goodbye. From there, I gained inspiration to learn more about the new industry I was branching into and started to work on the desktop application called \"MyAnimeViewer\" when I could. Eventually, in my final year of T127, MyAnimeViewer transferred over as a project for a class called Capstone. MyAnimeViewer is now out in early alpha as it functions, but is missing a lot of the components the final product will contain.<br><br>" +
-        "Although my desire to flourish in the Game Industry burns strong. I am beyond happy working in any field that involves programming. With my goal being to eventually receive a Masters Degree in Computer Science and climb the corporate ladder and/or help with the latest developments of Artificial Intelligence or Virtual Reality.";
+        var text = "Hi there! My name is Andrew and I specialize in computer programming. Some of my hobbies include Gaming, Snowboarding, Personal Fitness and Hiking. Personal Fitness and Hiking are hobbies I have recently begun to pursue.<br><br>"
+						+ "I graduated from George Brown College in the year of 2017 with a desire to make an impact on the industry by assisting in the development of innovative and cutting edge technology. I started this process at the beginning of 2018 by acquiring a position with Trilogen Technologies where I have gained invaluable experience.<br><br>"
+						+ "My quarterly responsibilities consist of creation of FSDs, development of requirements on the full stack alongside performing unit test cases, and assisting in the deployment process. Intermittently, throughout the quarterly cycle, I am tasked with debugging and the resolution of issues that arise on the production environment. At the end of each development cycle, I am responsible for Security Quality Review of my peers and vulnerability management with tools such as ThreadFix and Fortify to ensure the code which is being deployed is always safe and secure.<br><br>"
+						+ "Upon completion of each quarterly, patch or emergency release I have been tasked with ensuring the approval and signing off of all security related items. My involvement in this process consists of producing Security Peer Review Documentation, a Fortify Static Code Analysis file, and remediation of any and all Severity 1-4 vulnerabilities. In the finalization of these documents, I then work with the EIS (Enterprise Information Security) team for final approval and sign off so the code can be pushed to production.<br><br>"
+						+ "My acquired knowledge and experience has been very beneficial to the company and myself and I look forward to obtaining new abilities and accomplishments as I further myself within the industry.";
+						
         var width = window.innerHeight / 2;
         var style = this.style(width);
 
         if (!this.animated) {
             setTimeout(() => {
                 ConsoleTextEffect.AnimateText(this.refs.header.DOM(), "About", 35);
-                ConsoleTextEffect.AnimateText(this.refs.text, text, true, 5);
             }, 5);
             this.animated = true;
         }
@@ -65,7 +68,7 @@ class About extends Component {
         return (
             <div className="about-container">
                 <ExpandingTextButton ref="header" className="header" style={style} rotate="90" content="Contact" targetWidth={width} onClick={() => this.onClick()} />
-                <p className="text" ref="text"></p>
+                <AnimatedTextBlock className="text-block" text={text} />
             </div>
         );
     }
